@@ -20,6 +20,9 @@ const Alium = NativeModules.Alium
 export function multiply(a: number, b: number): Promise<number> {
   return Alium.multiply(a, b);
 }
+export function configure(url: String): void {
+  return Alium.configure(url);
+}
 export function showSurvey(screen: String): void {
   Alium.showSurvey(screen);
 }

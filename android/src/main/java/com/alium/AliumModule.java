@@ -12,15 +12,17 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.module.annotations.ReactModule;
+
 //import com.example.surveylib.survey.ShowSurvey;
 @ReactModule(name = AliumModule.NAME)
 public class AliumModule extends ReactContextBaseJavaModule {
   public static final String NAME = "Alium";
-  private static String URL="https://assets.alium.co.in/cmmn/cstjn/cstjn_1038.json";
+  private static String URL = "";
   private static ReactApplicationContext reactApplicationContext;
+
   public AliumModule(ReactApplicationContext reactContext) {
     super(reactContext);
-   reactApplicationContext=reactContext;
+    reactApplicationContext = reactContext;
   }
 
   @Override
@@ -29,14 +31,18 @@ public class AliumModule extends ReactContextBaseJavaModule {
     return NAME;
   }
 
-
   @ReactMethod
   public void multiply(double a, double b, Promise promise) {
     promise.resolve(a * b);
   }
 
   @ReactMethod
-  public void showSurvey(String screenName){
+  public void configure(String url) {
+    URL = url;
+  }
+
+  @ReactMethod
+  public void showSurvey(String screenName) {
     new ShowSurvey(reactApplicationContext.getCurrentActivity(), URL, screenName);
   }
 }

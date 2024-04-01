@@ -1,13 +1,14 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply, showSurvey } from 'react-native-alium';
+import { multiply, showSurvey, configure } from 'react-native-alium';
 
 export default function App() {
   const [result, setResult] = React.useState<number | undefined>();
 
   React.useEffect(() => {
     multiply(3, 7).then(setResult);
+    configure('');
     showSurvey('home');
   }, []);
 
