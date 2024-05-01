@@ -1,6 +1,6 @@
 # react-native-alium
 
-A React Native wrapper for Alium Android SDK 
+A React Native wrapper for Alium Android SDK
 
 ## Installation
 
@@ -11,11 +11,12 @@ npm install react-native-alium
 ## Usage
 
 ```js
-import { multiply } from 'react-native-alium';
+import { configure, showSurvey } from 'react-native-alium';
 
 // ...
 
-const result = await multiply(3, 7);
+configure(url);
+loadAliumSurvey(current_screen);
 ```
 
 ## Contributing
@@ -29,4 +30,4 @@ MIT
 ---
 
 Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
-"# react-native-alium" 
+"# react-native-alium"
