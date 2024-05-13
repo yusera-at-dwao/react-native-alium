@@ -11,9 +11,7 @@ import Test from './screens/Test';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  React.useEffect(() => {
-    configure('https://assets.alium.co.in/cmmn/cstjn/cstjn_1038.json');
-  }, []);
+  React.useEffect(() => {}, []);
 
   return (
     <NavigationContainer>

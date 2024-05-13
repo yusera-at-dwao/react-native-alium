@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Home = ({ navigation }) => {
   React.useEffect(() => {
+    console.log('Homescreen');
     loadAliumSurvey('firstscreen', {});
   }, []);
   return (
