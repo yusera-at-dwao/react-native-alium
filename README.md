@@ -10,13 +10,25 @@ npm install react-native-alium
 
 ## Usage
 
+Add the following maven url to your app's build.gradle file.
+
+```groovy
+    allprojects{
+      repositories{
+            google()
+            jcenter()
+            maven{url 'https://jitpack.io'}
+        }
+    }
+```
+
 ```js
 import { configure, showSurvey } from 'react-native-alium';
 
 // ...
 
-configure(url);
-loadAliumSurvey(current_screen);
+configure(url); //call at the entry point of your app
+loadAliumSurvey(current_screen, { key: value });
 ```
 
 ## Contributing

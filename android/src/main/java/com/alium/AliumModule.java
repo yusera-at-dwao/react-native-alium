@@ -1,17 +1,24 @@
 package com.alium;
 
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 
 
+import com.dwao.alium.survey.SurveyParameters;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.module.annotations.ReactModule;
 import com.dwao.alium.survey.Alium;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @ReactModule(name = AliumModule.NAME)
 public class AliumModule extends ReactContextBaseJavaModule {
@@ -41,7 +48,16 @@ public class AliumModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void showSurvey(String screenName) {
-    Alium.loadAliumSurvey(reactApplicationContext.getCurrentActivity(), screenName);
+  public void showSurvey(String screenName, ReadableMap customerVariables) {
+    Map variables=new HashMap();
+    ReadableMapKeySetIterator iterator=customerVariables.keySetIterator();
+    while(iterator.hasNextKey()){
+      String key=iterator.nextKey();
+      variables.put(key, customerVariables.getString(key));
+      Log.e("variables", variables.get(key).toString());
+    }
+
+    SurveyParameters surveyParameters=new SurveyParameters(screenName, variables);
+    Alium.loadAliumSurvey(reactApplicationContext.getCurrentActivity(), surveyParameters);
   }
 }

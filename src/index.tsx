@@ -20,6 +20,12 @@ const Alium = NativeModules.Alium
 export function configure(url: String): void {
   return Alium.configure(url);
 }
-export function loadAliumSurvey(screen: String): void {
-  Alium.showSurvey(screen);
+interface Variables {
+  [key: string]: any;
+}
+export function loadAliumSurvey(
+  screen: String,
+  customerParameters: Variables
+): void {
+  Alium.showSurvey(screen, customerParameters ? customerParameters : {});
 }
