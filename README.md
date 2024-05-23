@@ -10,25 +10,40 @@ npm install react-native-alium
 
 ## Usage
 
-Add the following maven url to your app's build.gradle file.
+### Configure the SDK with Configure()
 
-```groovy
-    allprojects{
-      repositories{
-            google()
-            jcenter()
-            maven{url 'https://jitpack.io'}
-        }
-    }
-```
+import configure from react-native-alium.
 
 ```js
-import { configure, showSurvey } from 'react-native-alium';
+import { configure } from 'react-native-alium';
+```
 
-// ...
+Call configure method.
 
-configure(url); //call at the entry point of your app
-loadAliumSurvey(current_screen, { key: value });
+```js
+configure('your_project_url');
+```
+
+This method should be the first method called when initializing the Alium SDK. It sets the project key or URL and must be invoked as soon as possible in your application's lifecycle. You can call it at the entry point(index.js) of the project.
+
+### Trigger Surveys
+
+Use AliumSdk.showSurvey() with the screen name to display surveys.
+
+Import showSurvey()
+
+```js
+import { loadAliumSurvey } from 'react-native-alium';
+```
+
+```dart
+ loadAliumSurvey("your_screen_name", {});
+```
+
+### Passing custom parameters to survey
+
+```js
+loadAliumSurvey('your_screen_name', { key: 'value' });
 ```
 
 ## Contributing
